@@ -27,6 +27,12 @@ function getMealApi() {
 getMealApi();
 
 function getIngredients(e) {
-  var ingredientsUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
-  console.log(e.target.id);
+  var ingredientsUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + e.target.id;
+  fetch(ingredientsUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    })
 }
