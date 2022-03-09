@@ -14,7 +14,6 @@ function getMealApi() {
       console.log(data);
 
       for (let i = 0; i < 5; i++) {
-        
         // card HTML for recipes
         var card = document.createElement("div");
         card.setAttribute("class", "card");
@@ -31,7 +30,7 @@ function getMealApi() {
         console.log(data.meals[i].strMeal);
         // card.append(btn);
 
-       card.addEventListener("click", getIngredients);
+        card.addEventListener("click", getIngredients);
       }
     });
 }
@@ -42,10 +41,9 @@ function getIngredients(e) {
   console.log(e.target.id);
 }
 
-// modal for recipe
-// var myModal = document.getElementById('myModal')
-// var myInput = document.getElementById('myInput')
-
-// myModal.addEventListener('shown.bs.modal', function () {
-//   myInput.focus()
-// })
+// LEAFLET MAP
+var map = L.map("map").setView([51.505, -0.09], 13);
+var attribution = __; // For copywrite.
+var titleUrl = __;
+var tileLayer = __;
+var apiUrl = __;
