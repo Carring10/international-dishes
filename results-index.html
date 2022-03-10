@@ -12,11 +12,11 @@
       crossorigin=""
     />
     <!-- Leaflet JS file. -->
-    <script
+    <!-- <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
       crossorigin=""
-    ></script>
+    ></script> -->
     <style>
       #map {
         height: 180px;
@@ -36,6 +36,13 @@
     </header>
     <!-- To store search results -->
     <main>
+      <select id="ethnicity">
+        <option value="british">British</option>
+        <option value="american">American</option>
+        <option value="french">French</option>
+        <option value="canadian">Canadian</option>
+        <option value="jamaican">Jamaican</option>
+      </select>
       <div id="search-results-container">
         <div id="map"></div>
 
