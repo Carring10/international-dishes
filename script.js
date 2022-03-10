@@ -19,13 +19,13 @@ function getMealApi(option) {
       for (let i = 0; i < 5; i++) {
         // card HTML for recipes
         var card = document.createElement("div");
-        card.setAttribute("class", "card");
+        var mealName = document.createElement("h3");
         var mealThumb = document.createElement("img");
+        card.setAttribute("class", "card");
+        mealName.textContent = data.meals[i].strMeal;
         mealThumb.src = data.meals[i].strMealThumb;
         mealThumb.height = 250;
         mealThumb.className = "img-thumbnail m-3";
-        var mealName = document.createElement("h3");
-        mealName.textContent = data.meals[i].strMeal;
         mealThumb.textContent = data.meals[i].strMealThumb;
         cardContainer.appendChild(card);
         card.append(mealName);
@@ -53,6 +53,8 @@ function getIngredients(e) {
     })
     .then(function (ingredientsData) {
       console.log(ingredientsData);
+      // Local storage.
+      localStorage.setItem("savedMeals", JSON.stringify(ingredientsData));
 
       var meal = ingredientsData.meals[0];
       var measurementParent = document.createElement("div");
@@ -73,10 +75,8 @@ function getIngredients(e) {
         var measurementList = document.createElement("p");
         // Replace Measure with Ingredient.
         var matchingIngredientKey = amount.replace("Measure", "Ingredient");
-        console.log(matchingIngredientKey);
         // Concatenate the measurement value to the newly replaced value of ingredient.
         measurementList.textContent = meal[amount] + " " + meal[matchingIngredientKey];
-        console.log(meal[matchingIngredientKey]);
 
         e.target.append(measurementParent);
         measurementParent.append(measurementList);
@@ -87,15 +87,54 @@ function getIngredients(e) {
 }
 
 // Drop down.
-select.addEventListener("change", function (event) {
-  getMealApi(event.target.value);
-});
+if (select !== null) {
+  select.addEventListener("change", function (event) {
+    getMealApi(event.target.value);
+  });
+}
 
-//getIngredients();
+// Recipe Page.
+var recipePage = document.getElementById("recipe-page-button");
+if (recipePage !== null) {
+  recipePage.addEventListener("click", function () {
+    window.location.href =
+      "file:///C:/Users/carri/Bootcamp/Projects/international-dishes/recipe-index.html";
+  });
+}
 
-// LEAFLET MAP
-// var map = L.map("map").setView([51.505, -0.09], 13);
-// var attribution = __; // For copywrite.
-// var titleUrl = __;
-// var tileLayer = __;
-// var apiUrl = __;
+function saveRecipe() {
+  var recipeContainer = document.getElementById("recipe-container");
+
+  var savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
+  var meal = savedMeals.meals[0];
+  var measurementParent = document.createElement("div");
+  var ingredientsH2 = document.createElement("h2");
+  var instructionsH2 = document.createElement("h2");
+  var instructions = document.createElement("p");
+  ingredientsH2.textContent = "Ingredients";
+  instructionsH2.textContent = "Instructions";
+  instructions.textContent = meal.strInstructions;
+  recipeContainer.append(measurementParent);
+  measurementParent.append(ingredientsH2);
+
+  // Filter all keys with the name 'Measure' that has a value.
+  var measurement = Object.keys(meal).filter(
+    (key) => key.includes("Measure") && meal[key] && meal[key].length
+  );
+  console.log(measurement);
+  for (let amount of measurement) {
+    var measurementList = document.createElement("p");
+    // Replace Measure with Ingredient.
+    var matchingIngredientKey = amount.replace("Measure", "Ingredient");
+    // Concatenate the measurement value to the newly replaced value of ingredient.
+    measurementList.textContent = meal[amount] + " " + meal[matchingIngredientKey];
+    console.log(savedMeals);
+
+    // e.target.append(measurementParent);
+    measurementParent.append(measurementList);
+  }
+  measurementParent.append(instructionsH2);
+  measurementParent.append(instructions);
+}
+
+// saveRecipeButton.addEventListener("click", saveRecipe);
