@@ -23,17 +23,16 @@ function getMealApi(option) {
         var mealThumb = document.createElement("img");
         mealThumb.src = data.meals[i].strMealThumb;
         mealThumb.height = 250;
+        mealThumb.width = 250;
         mealThumb.className = "img-thumbnail m-3";
         var mealName = document.createElement("h3");
         mealName.textContent = data.meals[i].strMeal;
         mealThumb.textContent = data.meals[i].strMealThumb;
-        cardContainer.appendChild(card);
+
         card.append(mealName);
         card.append(mealThumb);
         card.setAttribute("id", data.meals[i].idMeal);
-        // card.append(btn);
-
-        card.addEventListener("click", getIngredients);
+        cardContainer.appendChild(card);
       }
     })
     .catch(function (err) {
@@ -42,11 +41,14 @@ function getMealApi(option) {
 }
 // getMealApi();
 
-function getIngredients(e) {
-  var mealId = e.target.id;
-  console.log(e);
+function getIngredients(element) {
+  var mealId = element.id;
+  console.log(element);
   var ingredientsUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + mealId;
 
+  if (document.getElementById(mealId + "_ingredients") !== null) {
+    return;
+  }
   fetch(ingredientsUrl)
     .then(function (response) {
       return response.json();
@@ -56,6 +58,8 @@ function getIngredients(e) {
 
       var meal = ingredientsData.meals[0];
       var measurementParent = document.createElement("div");
+      measurementParent.id = mealId + "_ingredients";
+      
       var ingredientsH2 = document.createElement("h2");
       var instructionsH2 = document.createElement("h2");
       var instructions = document.createElement("p");
@@ -69,6 +73,8 @@ function getIngredients(e) {
         (key) => key.includes("Measure") && meal[key] && meal[key].length
       );
       console.log(measurement);
+      
+      // measurementParent.innerHTML = "";
       for (let amount of measurement) {
         var measurementList = document.createElement("p");
         // Replace Measure with Ingredient.
@@ -78,8 +84,9 @@ function getIngredients(e) {
         measurementList.textContent = meal[amount] + " " + meal[matchingIngredientKey];
         console.log(meal[matchingIngredientKey]);
 
-        e.target.append(measurementParent);
+        
         measurementParent.append(measurementList);
+        element.append(measurementParent);
       }
       measurementParent.append(instructionsH2);
       measurementParent.append(instructions);
@@ -91,11 +98,9 @@ select.addEventListener("change", function (event) {
   getMealApi(event.target.value);
 });
 
-//getIngredients();
-
-// LEAFLET MAP
-// var map = L.map("map").setView([51.505, -0.09], 13);
-// var attribution = __; // For copywrite.
-// var titleUrl = __;
-// var tileLayer = __;
-// var apiUrl = __;
+// event delegation
+cardContainer.addEventListener("click", function (event) {
+  if(event.target.matches(".card")||event.target.matches(".img-thumbnail")||event.target.matches("h3")) {
+    getIngredients(event.target.closest('.card'));
+  }
+})
