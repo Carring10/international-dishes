@@ -22,7 +22,7 @@ function getMealApi(option) {
         var saveRecipeButton = document.createElement("button");
         var mealThumb = document.createElement("img");
 
-        card.setAttribute("class", "card");
+        card.setAttribute("class", "card border-primary");
         mealName.textContent = data.meals[i].strMeal;
         saveRecipeButton.textContent = "Save Recipe";
         mealThumb.src = data.meals[i].strMealThumb;
