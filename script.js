@@ -6,7 +6,6 @@ var select = document.getElementById("ethnicity");
 function getMealApi(option) {
   // API URL for specified country.
   var countryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + option;
-  console.log(option);
 
   fetch(countryUrl)
     .then(function (response) {
@@ -16,13 +15,17 @@ function getMealApi(option) {
       console.log(data);
 
       cardContainer.innerHTML = "";
+
       for (let i = 0; i < 5; i++) {
         // card HTML for recipes
         var card = document.createElement("div");
         var mealName = document.createElement("h3");
+        var saveRecipeButton = document.createElement("button");
         var mealThumb = document.createElement("img");
+
         card.setAttribute("class", "card");
         mealName.textContent = data.meals[i].strMeal;
+        saveRecipeButton.textContent = "Save Recipe";
         mealThumb.src = data.meals[i].strMealThumb;
         mealThumb.height = 250;
         mealThumb.width = 250;
@@ -30,7 +33,9 @@ function getMealApi(option) {
         mealThumb.textContent = data.meals[i].strMealThumb;
 
         card.append(mealName);
+        card.append(saveRecipeButton);
         card.append(mealThumb);
+        console.log(data.meals[i]);
         card.setAttribute("id", data.meals[i].idMeal);
         cardContainer.appendChild(card);
       }
@@ -65,6 +70,7 @@ function getIngredients(element) {
       var ingredientsH2 = document.createElement("h2");
       var instructionsH2 = document.createElement("h2");
       var instructions = document.createElement("p");
+
       ingredientsH2.textContent = "Ingredients";
       instructionsH2.textContent = "Instructions";
       instructions.textContent = meal.strInstructions;
@@ -77,6 +83,7 @@ function getIngredients(element) {
       console.log(measurement);
 
       // measurementParent.innerHTML = "";
+
       for (let amount of measurement) {
         var measurementList = document.createElement("p");
         // Replace Measure with Ingredient.
@@ -89,6 +96,9 @@ function getIngredients(element) {
       }
       measurementParent.append(instructionsH2);
       measurementParent.append(instructions);
+    })
+    .catch(function (err) {
+      console.log(err);
     });
 }
 
@@ -111,27 +121,41 @@ cardContainer.addEventListener("click", function (event) {
 });
 // Recipe Page.
 var recipePage = document.getElementById("recipe-page-button");
+
+// To change file path to recipe page.
 if (recipePage !== null) {
   recipePage.addEventListener("click", function () {
-    window.location.href =
-      "file:///C:/Users/carri/Bootcamp/Projects/international-dishes/recipe-index.html";
+    window.location.href = "recipe-index.html";
   });
 }
 
-function saveRecipe() {
-  var recipeContainer = document.getElementById("recipe-container");
+// Only to execute if user is on recipe page.
+function isOnRecipePage() {
+  return window.location.pathname.includes("recipe-index.html");
+}
 
+function saveRecipe() {
+  getInstructionsData();
+}
+saveRecipe();
+
+function getInstructionsData() {
   var savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
+  var recipeContainer = document.getElementById("recipe-container");
   var meal = savedMeals.meals[0];
   var measurementParent = document.createElement("div");
   var ingredientsH2 = document.createElement("h2");
   var instructionsH2 = document.createElement("h2");
   var instructions = document.createElement("p");
+
   ingredientsH2.textContent = "Ingredients";
   instructionsH2.textContent = "Instructions";
   instructions.textContent = meal.strInstructions;
-  recipeContainer.append(measurementParent);
-  measurementParent.append(ingredientsH2);
+
+  if (isOnRecipePage()) {
+    recipeContainer.append(measurementParent);
+    measurementParent.append(ingredientsH2);
+  }
 
   // Filter all keys with the name 'Measure' that has a value.
   var measurement = Object.keys(meal).filter(
@@ -152,6 +176,4 @@ function saveRecipe() {
   measurementParent.append(instructionsH2);
   measurementParent.append(instructions);
 }
-
-// saveRecipeButton.addEventListener("click", saveRecipe);
-// merge
+console.log(window);
