@@ -1,7 +1,6 @@
 var resultsContainer = document.getElementById("search-results-container");
 var cardContainer = document.getElementById("card-container");
 var select = document.getElementById("ethnicity");
-// var selectValue = select.options[select.selectedIndex].value;
 
 function getMealApi(option) {
   // API URL for specified country.
