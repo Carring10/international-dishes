@@ -22,7 +22,7 @@ function getMealApi(option) {
         var mealName = document.createElement("h3");
         var mealThumb = document.createElement("img");
 
-        card.setAttribute("class", "card");
+        card.setAttribute("class", "card border-primary");
         mealName.textContent = data.meals[i].strMeal;
         mealThumb.src = data.meals[i].strMealThumb;
         mealThumb.height = 250;

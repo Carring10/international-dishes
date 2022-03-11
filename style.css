@@ -1,23 +1,41 @@
 * {
+    font-family: 'Murecho', sans-serif;
+    color: #424242;    
+}
+
+body {
+    background-color: #ffe8d6;
+}
+
+nav h1 {
+    font-family: 'Oooh Baby', cursive;
+    color: white;
+}
+
+header {
     margin-left: 10px;
     margin-right: 10px;
 }
 
+
 #card-container {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 15px;
     margin-left: 10px;
     align-items: center;
+    margin-right: 10px;
 }
 
 .card {
-display: inline-flex;
-margin-bottom:10px;
-max-width: 500px;
-align-items: center;
-padding-right: 4px;
-background-color: aliceblue;
+    display: inline-flex;
+    margin-bottom:20px;
+    margin-left: 20px;
+    max-width: 500px;
+    align-items: center;
+    padding-right: 4px;
+    
 }
 
 .card h3 {
@@ -26,6 +44,28 @@ background-color: aliceblue;
     text-align: center;
     font-size: 22px;
 }
-header {
 
+.card h2 {
+    margin-left: 10px;
+}
+
+.card p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#countryDrop {
+    display: block;
+    margin-top: 150px;
+    max-width: 50%;
+    align-items: center;
+}
+
+#recipe-container {
+    margin-left: 50px;
+    margin-top: 125px;
+}
+
+#recipe-container h2 {
+    text-align: center;
 }
