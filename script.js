@@ -62,8 +62,8 @@ function getIngredients(element) {
 
       measurementParent.id = mealId + "_ingredients";
 
-      var ingredientsH2 = document.createElement("h2");
-      var instructionsH2 = document.createElement("h2");
+      var ingredientsH2 = document.createElement("h3");
+      var instructionsH2 = document.createElement("h3");
       var instructions = document.createElement("p");
       var saveRecipeBtn = document.createElement("button");
 
@@ -71,6 +71,7 @@ function getIngredients(element) {
       instructionsH2.textContent = "Instructions";
       instructions.textContent = meal.strInstructions;
       saveRecipeBtn.textContent = "Save Recipe";
+      measurementParent.innerHTML = "";
       measurementParent.append(ingredientsH2);
 
       // Filter all keys with the name 'Measure' that has a value.
