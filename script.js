@@ -42,6 +42,7 @@ function getDrinkApi(option) {
         drinkRecipeH3.textContent = "Instructions";
         drinkRecipe.textContent = data.drinks[0].strInstructions;
         drinkGlass.textContent = "Serve in: " + data.drinks[0].strGlass;
+        card.cardContainer.display.style = "none";
         drinkContainer.append(drinkName);
         drinkContainer.append(drinkThumb);
         drinkContainer.append(drinkIngredientH3);
@@ -104,6 +105,7 @@ function getMealApi(option) {
         mealThumb.className = "img-thumbnail m-3";
         mealThumb.textContent = data.meals[i].strMealThumb;
 
+        drinkContainer.style.display = "none";
         card.append(mealName);
         card.append(mealThumb);
         card.setAttribute("id", data.meals[i].idMeal);
