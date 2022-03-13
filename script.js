@@ -33,8 +33,8 @@ function getDrinkApi(option) {
         randomDrink.setAttribute("class", "p-5 mb-4 bg-light rounded-3");
         drinkName.textContent = data.drinks[0].strDrink;
         drinkThumb.src = data.drinks[0].strDrinkThumb;
-        drinkThumb.height = 300;
-        drinkThumb.width = 300;
+        drinkThumb.height = 400;
+        drinkThumb.width = 400;
         drinkThumb.className = "img-thumbnail m-3";
         drinkThumb.textContent = data.drinks[0].strDrinkThumb;
         drinkIngredientH3.textContent = "Ingredients";
@@ -139,19 +139,23 @@ function getIngredients(element) {
       var meal = ingredientsData.meals[0];
 
       measurementParent.id = mealId + "_ingredients";
+      measurementParent.setAttribute("data-toggle", "collapse");
+      measurementParent.setAttribute("class", "collapsed");
 
       var ingredientsH2 = document.createElement("h3");
       var instructionsH2 = document.createElement("h3");
+      var cardBlock = document.createElement("div");
+      // cardBlock.setAttribute("data-toggle", "collapse");
       var instructions = document.createElement("p");
       var saveRecipeBtn = document.createElement("button");
       saveRecipeBtn.setAttribute("class", "btn btn-primary");
-
       ingredientsH2.textContent = "Ingredients";
       instructionsH2.textContent = "Instructions";
       instructions.textContent = meal.strInstructions;
       saveRecipeBtn.textContent = "Save Recipe";
       measurementParent.innerHTML = "";
       measurementParent.append(ingredientsH2);
+       
 
       // Filter all keys with the name 'Measure' that has a value.
       var measurement = Object.keys(meal).filter(
