@@ -1,71 +1,155 @@
 * {
-    font-family: 'Murecho', sans-serif;
-    color: black;    
+  font-family: "Murecho", sans-serif;
+  color: black;
 }
 
 body {
-    background-color: #ffe8d6;
+  background-color: #ffe8d6;
+}
+
+.navbar {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 nav h1 {
-    font-family: 'Oooh Baby', cursive;
-    color: black;
+  font-family: "Oooh Baby", cursive;
+  color: black;
+  font-size: 45px;
+  margin: 15px;
 }
 
 header {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-
-#card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly; 
-    padding: 15px;
-    margin-left: 10px;
-    align-items: center;
-    margin-right: 10px;
+#recipe-page-button {
+  margin: 15px;
+  transition: 0.5s;
 }
 
-.card {
-    display: inline-flex;
-    margin-bottom:20px;
-    margin-left: 20px;
-    max-width: 500px;
-    align-items: center;
-    padding-right: 4px;
-    
-}
-
-.card h3 {
-    padding:5px;
-    inline-size: 400px;
-    text-align: center;
-    font-size: 22px;
-}
-
-.card h2 {
-    margin-left: 10px;
-}
-
-.card p {
-    margin-left: 10px;
-    margin-right: 10px;
+#recipe-page-button:hover {
+  opacity: 0.5;
 }
 
 #countryDrop {
-    display: block;
-    margin-top: 150px;
-    max-width: 50%;
-    align-items: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+#countryDrop h2 {
+  text-align: center;
+}
+
+#ethnicity {
+  cursor: pointer;
+  margin: 15px;
+}
+
+select option {
+  cursor: pointer;
+}
+
+#card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 15px;
+  margin-left: 10px;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.card {
+  display: inline-flex;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  max-width: 500px;
+  align-items: center;
+  padding-right: 4px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  transition: transform 250ms;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  padding: 5px;
+  inline-size: 400px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.card h2 {
+  margin-left: 10px;
+}
+
+.card p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.card button {
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #f3969a;
+  color: black;
+  transition: 0.5s;
+}
+
+.card button:hover {
+  opacity: 0.8;
+  color: black;
+}
+
+#countryDrop {
+  display: block;
+  margin-top: 150px;
+  max-width: 50%;
+  align-items: center;
+}
+
+/* Recipe HTML page */
+header {
+}
+
+.navbar-title {
+  font-size: 45px;
+}
+
+#back-button {
+  margin: 20px;
+  transition: 0.5s;
+}
+
+#back-button:hover {
+  opacity: 0.5;
 }
 
 #recipe-container {
-    margin-left: 50px;
-    margin-top: 125px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #78c2ad;
+  border-radius: 15px;
+  max-width: 55%;
+  margin: 0 auto;
+  margin-top: 150px;
+  padding: 50px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+#recipe-contianer h1 {
+  align-self: center;
+  text-align: center;
 }
 
 #recipe-container h2 {
-    text-align: center;
+  align-self: flex-start;
+  text-align: center;
+  border-bottom: 1px solid grey;
+  max-width: 20%;
 }
