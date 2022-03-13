@@ -34,6 +34,7 @@ function getDrinkApi(option) {
       var drinkRecipe = document.createElement("p");
       var drinkGlass = document.createElement("p");
 
+<<<<<<< HEAD
       randomDrink.setAttribute("class", "p-5 mb-4 bg-light rounded-3");
       drinkName.textContent = data.drinks[0].strDrink;
       drinkThumb.src = data.drinks[0].strDrinkThumb;
@@ -52,6 +53,41 @@ function getDrinkApi(option) {
       var measurement = Object.keys(drink).filter(
         (key) => key.includes("Measure") && drink[key] && drink[key].length
       );
+=======
+        randomDrink.setAttribute("class", "p-5 mb-4 bg-light rounded-3");
+        drinkName.textContent = data.drinks[0].strDrink;
+        drinkThumb.src = data.drinks[0].strDrinkThumb;
+        drinkThumb.height = 400;
+        drinkThumb.width = 400;
+        drinkThumb.className = "img-thumbnail m-3";
+        drinkThumb.textContent = data.drinks[0].strDrinkThumb;
+        drinkIngredientH3.textContent = "Ingredients";
+        drinkIngredient.textContent = data.drinks[0].strIngredients;
+        drinkRecipeH3.textContent = "Instructions";
+        drinkRecipe.textContent = data.drinks[0].strInstructions;
+        drinkGlass.textContent = "Serve in: " + data.drinks[0].strGlass;
+        drinkContainer.append(drinkName);
+        drinkContainer.append(drinkThumb);
+        drinkContainer.append(drinkIngredientH3);
+        var measurement = Object.keys(drink).filter(
+          (key) => key.includes("Measure") && drink[key] && drink[key].length
+        );
+    
+        for (let amount of measurement) {
+          var measurementList = document.createElement("p");
+          // Replace Measure with Ingredient.
+          var matchingIngredientKey = amount.replace("Measure", "Ingredient");
+          // Concatenate the measurement value to the newly replaced value of ingredient.
+          measurementList.textContent = drink[amount] + " " + drink[matchingIngredientKey];
+    
+          drinkContainer.append(measurementList);
+    
+      };
+    
+        drinkContainer.append(drinkIngredient);
+        drinkContainer.append(drinkRecipeH3);
+        drinkContainer.append(drinkRecipe);
+>>>>>>> 2aef1087a1eee0d5c31b8e855a7ad00b4d8917c0
 
       for (let amount of measurement) {
         var measurementList = document.createElement("p");
@@ -148,19 +184,23 @@ function getIngredients(element) {
 
       var measurementParent = document.createElement("div");
       measurementParent.id = mealId + "_ingredients";
+      measurementParent.setAttribute("data-toggle", "collapse");
+      measurementParent.setAttribute("class", "collapsed");
 
       var ingredientsH2 = document.createElement("h3");
       var instructionsH2 = document.createElement("h3");
+      var cardBlock = document.createElement("div");
+      // cardBlock.setAttribute("data-toggle", "collapse");
       var instructions = document.createElement("p");
       var saveRecipeBtn = document.createElement("button");
       saveRecipeBtn.setAttribute("class", "btn btn-primary");
-
       ingredientsH2.textContent = "Ingredients";
       instructionsH2.textContent = "Instructions";
       instructions.textContent = meal.strInstructions;
       saveRecipeBtn.textContent = "Save Recipe";
       measurementParent.innerHTML = "";
       measurementParent.append(ingredientsH2);
+       
 
       // Filter all keys with the name 'Measure' that has a value.
       var measurement = Object.keys(meal).filter(
