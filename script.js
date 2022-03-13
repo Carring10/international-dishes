@@ -46,6 +46,26 @@ function getDrinkApi(option) {
       drinkRecipeH3.textContent = "Instructions";
       drinkRecipe.textContent = data.drinks[0].strInstructions;
       drinkGlass.textContent = "Serve in: " + data.drinks[0].strGlass;
+      drinkContainer.append(drinkName);
+      drinkContainer.append(drinkThumb);
+      drinkContainer.append(drinkIngredientH3);
+      var measurement = Object.keys(drink).filter(
+        (key) => key.includes("Measure") && drink[key] && drink[key].length
+      );
+
+      for (let amount of measurement) {
+        var measurementList = document.createElement("p");
+        // Replace Measure with Ingredient.
+        var matchingIngredientKey = amount.replace("Measure", "Ingredient");
+        // Concatenate the measurement value to the newly replaced value of ingredient.
+        measurementList.textContent = drink[amount] + " " + drink[matchingIngredientKey];
+
+        drinkContainer.append(measurementList);
+      }
+
+      drinkContainer.append(drinkIngredient);
+      drinkContainer.append(drinkRecipeH3);
+      drinkContainer.append(drinkRecipe);
 
       drinkContainer.append(drinkName);
       drinkContainer.append(drinkThumb);
