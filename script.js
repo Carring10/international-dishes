@@ -1,14 +1,11 @@
 var resultsContainer = document.getElementById("search-results-container");
 var cardContainer = document.getElementById("card-container");
 var select = document.getElementById("ethnicity");
-<<<<<<< HEAD
 // Recipe Page.
 var recipePage = document.getElementById("recipe-page-button");
-=======
 var measurementParent = document.createElement("div");
 var drinkContainer = document.getElementById("drink-container");
 var dranks = document.getElementById("drinkButton");
-
 
 //Cocktail API
 function getDrinkApi(option) {
@@ -23,65 +20,57 @@ function getDrinkApi(option) {
 
       var drink = data.drinks[0];
 
-      drinkContainer.setAttribute("class", "p-5 mb-4 text-white bg-primary border rounded-3 mx-auto");
+      drinkContainer.setAttribute(
+        "class",
+        "p-5 mb-4 text-white bg-primary border rounded-3 mx-auto"
+      );
       drinkContainer.innerHTML = "";
-        var randomDrink = document.createElement("div");
-        var drinkName = document.createElement("h3");
-        var drinkThumb = document.createElement("img");
-        var drinkIngredientH3 = document.createElement("h3");
-        var drinkIngredient = document.createElement("p");
-        var drinkRecipeH3 = document.createElement("h3");
-        var drinkRecipe = document.createElement("p");
-        var drinkGlass = document.createElement("p");
+      var randomDrink = document.createElement("div");
+      var drinkName = document.createElement("h3");
+      var drinkThumb = document.createElement("img");
+      var drinkIngredientH3 = document.createElement("h3");
+      var drinkIngredient = document.createElement("p");
+      var drinkRecipeH3 = document.createElement("h3");
+      var drinkRecipe = document.createElement("p");
+      var drinkGlass = document.createElement("p");
 
-        randomDrink.setAttribute("class", "p-5 mb-4 bg-light rounded-3");
-        drinkName.textContent = data.drinks[0].strDrink;
-        drinkThumb.src = data.drinks[0].strDrinkThumb;
-        drinkThumb.height = 300;
-        drinkThumb.width = 300;
-        drinkThumb.className = "img-thumbnail m-3";
-        drinkThumb.textContent = data.drinks[0].strDrinkThumb;
-        drinkIngredientH3.textContent = "Ingredients";
-        drinkIngredient.textContent = data.drinks[0].strIngredients;
-        drinkRecipeH3.textContent = "Instructions";
-        drinkRecipe.textContent = data.drinks[0].strInstructions;
-        drinkGlass.textContent = "Serve in: " + data.drinks[0].strGlass;
-        card.cardContainer.display.style = "none";
-        drinkContainer.append(drinkName);
-        drinkContainer.append(drinkThumb);
-        drinkContainer.append(drinkIngredientH3);
-        var measurement = Object.keys(drink).filter(
-          (key) => key.includes("Measure") && drink[key] && drink[key].length
-        );
-    
-        for (let amount of measurement) {
-          var measurementList = document.createElement("p");
-          // Replace Measure with Ingredient.
-          var matchingIngredientKey = amount.replace("Measure", "Ingredient");
-          // Concatenate the measurement value to the newly replaced value of ingredient.
-          measurementList.textContent = drink[amount] + " " + drink[matchingIngredientKey];
-    
-          drinkContainer.append(measurementList);
-    
-      };
-    
-        drinkContainer.append(drinkIngredient);
-        drinkContainer.append(drinkRecipeH3);
-        drinkContainer.append(drinkRecipe);
+      randomDrink.setAttribute("class", "p-5 mb-4 bg-light rounded-3");
+      drinkName.textContent = data.drinks[0].strDrink;
+      drinkThumb.src = data.drinks[0].strDrinkThumb;
+      drinkThumb.height = 300;
+      drinkThumb.width = 300;
+      drinkThumb.className = "img-thumbnail m-3";
+      drinkThumb.textContent = data.drinks[0].strDrinkThumb;
+      drinkIngredientH3.textContent = "Ingredients";
+      drinkIngredient.textContent = data.drinks[0].strIngredients;
+      drinkRecipeH3.textContent = "Instructions";
+      drinkRecipe.textContent = data.drinks[0].strInstructions;
+      drinkGlass.textContent = "Serve in: " + data.drinks[0].strGlass;
+      card.cardContainer.display.style = "none";
+      drinkContainer.append(drinkName);
+      drinkContainer.append(drinkThumb);
+      drinkContainer.append(drinkIngredientH3);
+      var measurement = Object.keys(drink).filter(
+        (key) => key.includes("Measure") && drink[key] && drink[key].length
+      );
 
-       
+      for (let amount of measurement) {
+        var measurementList = document.createElement("p");
+        // Replace Measure with Ingredient.
+        var matchingIngredientKey = amount.replace("Measure", "Ingredient");
+        // Concatenate the measurement value to the newly replaced value of ingredient.
+        measurementList.textContent = drink[amount] + " " + drink[matchingIngredientKey];
 
-        
-        
+        drinkContainer.append(measurementList);
+      }
+
+      drinkContainer.append(drinkIngredient);
+      drinkContainer.append(drinkRecipeH3);
+      drinkContainer.append(drinkRecipe);
+
       drinkContainer.append(drinkGlass);
-
-      });
-
-    }
-
-    
-
->>>>>>> 2175b41bff4663fafca6524ac68f664a6f38d3be
+    });
+}
 
 function getMealApi(option) {
   // API URL for specified country.
@@ -121,8 +110,6 @@ function getMealApi(option) {
       console.log(err);
     });
 }
-
-
 
 // getMealApi();
 
@@ -194,7 +181,6 @@ if (select !== null) {
   });
 }
 
-<<<<<<< HEAD
 // Only to execute if user is on recipe page.
 function isOnRecipePage() {
   return window.location.pathname.includes("recipe-index.html");
@@ -244,86 +230,82 @@ function getInstructionsData() {
     measurementParent.append(instructionsH2);
     measurementParent.append(instructions);
   }
-=======
-// Cocktail Randomizer
-if (dranks !== null) {
-  dranks.addEventListener("click", function (event) {
-    getDrinkApi(event.target.value);
-  });
->>>>>>> 2175b41bff4663fafca6524ac68f664a6f38d3be
-}
+  // Cocktail Randomizer
+  if (dranks !== null) {
+    dranks.addEventListener("click", function (event) {
+      getDrinkApi(event.target.value);
+    });
+  }
 
-// event delegation
-if (cardContainer !== null) {
-  cardContainer.addEventListener("click", function (event) {
-    if (
-      event.target.matches(".card") ||
-      event.target.matches(".img-thumbnail") ||
-      event.target.matches("h3")
-    ) {
-      getIngredients(event.target.closest(".card"));
+  // event delegation
+  if (cardContainer !== null) {
+    cardContainer.addEventListener("click", function (event) {
+      if (
+        event.target.matches(".card") ||
+        event.target.matches(".img-thumbnail") ||
+        event.target.matches("h3")
+      ) {
+        getIngredients(event.target.closest(".card"));
+      }
+    });
+  }
+
+  // To change file path to recipe page.
+  if (recipePage !== null) {
+    recipePage.addEventListener("click", function () {
+      window.location.href = "recipe-index.html";
+    });
+  }
+
+  saveRecipe();
+  // Only to execute if user is on recipe page.
+  function isOnRecipePage() {
+    return window.location.pathname.includes("recipe-index.html");
+  }
+
+  function saveRecipe() {
+    getInstructionsData();
+  }
+
+  saveRecipe();
+
+  function getInstructionsData() {
+    var savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
+    console.log(savedMeals);
+    var recipeContainer = document.getElementById("recipe-container");
+    var meal = savedMeals.meals[0];
+    var measurementParent = document.createElement("div");
+    var savedMealName = document.createElement("h1");
+    var ingredientsH2 = document.createElement("h2");
+    var instructionsH2 = document.createElement("h2");
+    var instructions = document.createElement("p");
+
+    savedMealName.textContent = savedMeals.meals[0].strMeal;
+    ingredientsH2.textContent = "Ingredients";
+    instructionsH2.textContent = "Instructions";
+    instructions.textContent = meal.strInstructions;
+
+    if (isOnRecipePage()) {
+      measurementParent.append(savedMealName);
+      recipeContainer.append(measurementParent);
+      measurementParent.append(ingredientsH2);
     }
-  });
-}
 
-// To change file path to recipe page.
-if (recipePage !== null) {
-  recipePage.addEventListener("click", function () {
-    window.location.href = "recipe-index.html";
-  });
-}
+    // Filter all keys with the name 'Measure' that has a value.
+    var measurement = Object.keys(meal).filter(
+      (key) => key.includes("Measure") && meal[key] && meal[key].length
+    );
+    for (let amount of measurement) {
+      var measurementList = document.createElement("p");
+      // Replace Measure with Ingredient.
+      var matchingIngredientKey = amount.replace("Measure", "Ingredient");
+      // Concatenate the measurement value to the newly replaced value of ingredient.
+      measurementList.textContent = meal[amount] + " " + meal[matchingIngredientKey];
 
-<<<<<<< HEAD
-saveRecipe();
-=======
-// Only to execute if user is on recipe page.
-function isOnRecipePage() {
-  return window.location.pathname.includes("recipe-index.html");
-}
-
-function saveRecipe() {
-  getInstructionsData();
-}
-
-saveRecipe();
-
-function getInstructionsData() {
-  var savedMeals = JSON.parse(localStorage.getItem("savedMeals"));
-  console.log(savedMeals);
-  var recipeContainer = document.getElementById("recipe-container");
-  var meal = savedMeals.meals[0];
-  var measurementParent = document.createElement("div");
-  var savedMealName = document.createElement("h1");
-  var ingredientsH2 = document.createElement("h2");
-  var instructionsH2 = document.createElement("h2");
-  var instructions = document.createElement("p");
-
-  savedMealName.textContent = savedMeals.meals[0].strMeal;
-  ingredientsH2.textContent = "Ingredients";
-  instructionsH2.textContent = "Instructions";
-  instructions.textContent = meal.strInstructions;
-
-  if (isOnRecipePage()) {
-    measurementParent.append(savedMealName);
-    recipeContainer.append(measurementParent);
-    measurementParent.append(ingredientsH2);
+      // e.target.append(measurementParent);
+      measurementParent.append(measurementList);
+    }
+    measurementParent.append(instructionsH2);
+    measurementParent.append(instructions);
   }
-
-  // Filter all keys with the name 'Measure' that has a value.
-  var measurement = Object.keys(meal).filter(
-    (key) => key.includes("Measure") && meal[key] && meal[key].length
-  );
-  for (let amount of measurement) {
-    var measurementList = document.createElement("p");
-    // Replace Measure with Ingredient.
-    var matchingIngredientKey = amount.replace("Measure", "Ingredient");
-    // Concatenate the measurement value to the newly replaced value of ingredient.
-    measurementList.textContent = meal[amount] + " " + meal[matchingIngredientKey];
-
-    // e.target.append(measurementParent);
-    measurementParent.append(measurementList);
-  }
-  measurementParent.append(instructionsH2);
-  measurementParent.append(instructions);
 }
->>>>>>> 2175b41bff4663fafca6524ac68f664a6f38d3be
