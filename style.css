@@ -31,6 +31,10 @@ header {
 #recipe-page-button:hover {
   opacity: 0.5;
 }
+.card button {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
 
 #countryDrop {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -212,4 +216,23 @@ select option:hover {
   background-color: #78c2ad86;
   border-radius: 3px;
   padding-left: 5px;
+}
+
+#drink-container {
+    display: block;
+    max-width: 50%;
+    justify-content: center; 
+    padding: 10px;
+    margin-left: 10px;
+    align-items: center;
+    margin-right: 10px;
+}
+
+#drink-container h3 {
+    text-align: center;
+}
+
+#drink-container img {
+    justify-content: center;
+    align-self: center;
 }

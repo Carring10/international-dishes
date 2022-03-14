@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Murecho:wght@300;400&family=Oooh+Baby&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./assets/bootstrap.css" />
+  <title>Taste Bud Travels &#187; Recipes from Around the World</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-dark bg-primary fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-title">
+      <h1><a href="results-index.html"><img src="./assets/recipe-book-svgrepo-com.svg" alt="Recipe Book" height="50" width="50"></a>
+        Taste Bud Travels &#187; Recipes from Around the World</h1>
+      </div>
+        <button id="recipe-page-button" class="btn btn-light">Go to Saved Recipes</button>
+        </div>
+    </nav>
+    <div id="countryDrop" class="p-5 mb-4 text-white bg-primary border rounded-3 mx-auto">
+      <h2>Where do your taste buds want to travel to today?</h2>
+    <select id="ethnicity" class="form-select form-select-lg mb-3 marg">
+      <option value="">----</option>
+      <option value="canadian">Canada</option>
+      <option value="chinese">China</option>
+      <option value="croatian">Croatia</option>
+      <option value="dutch">The Netherlands</option>
+      <option value="egyptian">Egypt</option>
+      <option value="french">France</option>
+      <option value="british">Great Britain</option>
+      <option value="greek">Greece</option>
+      <option value="indian">India</option>
+      <option value="irish">Ireland</option>
+      <option value="italian">Italy</option>
+      <option value="jamaican">Jamaica</option>
+      <option value="japanese">Japan</option>
+      <option value="kenyan">Kenya</option>
+      <option value="malaysian">Malaysia</option>
+      <option value="mexican">Mexico</option>
+      <option value="moroccan">Morocco</option>
+      <option value="polish">Poland</option>
+      <option value="portuguese">Portugal</option>
+      <option value="russian">Russia</option>
+      <option value="spanish">Spain</option>
+      <option value="thai">Thailand</option>
+      <option value="tunisian">Tunisia</option>
+      <option value="turkish">Turkey</option>
+      <option value="american">United States of America</option>
+      <option value="vietnamese">Vietnam</option>
+    </select>
+    <hr>
+    <h3>Looking for a cocktail?</h3>
+    <button id="drinkButton" class="btn btn-light">Try our Cocktail Randomizer!</button>
+  </div>
+  </header>
+  <!-- To store search results -->
+  <main>
+    <div id="search-results-container container-md" class="row">
+      <div id="drink-container">
+        <!-- random drink here -->
+      </div>
+      <div id="card-container" class="col-md-12 justify-content-center">
+        <!-- cards here -->
+      </div>
+    </div>
+    
+  </main>
+</body>
+
+<script src="./script.js"></script>
+
+</html>
