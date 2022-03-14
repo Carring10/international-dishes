@@ -66,7 +66,13 @@ select option:hover {
 }
 
 #drink-container h3 {
-  align-self: flex-start;
+  align-self: center;
+  font-size: 30px;
+}
+
+.drink-img-and-text {
+  display: flex;
+  margin-top: 10px;
 }
 
 #card-container {

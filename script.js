@@ -237,6 +237,7 @@ function getDrinkApi(option) {
       drinkContainer.innerHTML = "";
       var randomDrink = document.createElement("div");
       var drinkContent = document.createElement("div");
+      var drinkImgAndText = document.createElement("div");
       var drinkName = document.createElement("h3");
       var drinkThumb = document.createElement("img");
       var drinkIngredientH3 = document.createElement("h3");
@@ -258,9 +259,12 @@ function getDrinkApi(option) {
       drinkRecipe.textContent = data.drinks[0].strInstructions;
       drinkGlass.textContent = "Serve in: " + data.drinks[0].strGlass;
 
+      drinkImgAndText.append(drinkContent);
+      drinkImgAndText.setAttribute("class", "drink-img-and-text");
       drinkContainer.append(drinkName);
-      drinkContainer.append(drinkThumb);
-      drinkContainer.append(drinkContent);
+      drinkContainer.append(drinkImgAndText);
+      drinkImgAndText.append(drinkThumb);
+      drinkImgAndText.append(drinkContent);
       drinkContent.append(drinkIngredientH3);
       var measurement = Object.keys(drink).filter(
         (key) => key.includes("Measure") && drink[key] && drink[key].length
