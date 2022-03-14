@@ -1,57 +1,35 @@
 * {
-    font-family: 'Murecho', sans-serif;
-    color: black;    
+  font-family: "Murecho", sans-serif;
+  color: black;
 }
 
 body {
-    background-color: #ffe8d6;
+  background-color: #ffe8d6;
+}
+
+.navbar {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 nav h1 {
-    font-family: 'Oooh Baby', cursive;
-    color: black;
+  font-family: "Oooh Baby", cursive;
+  color: black;
+  font-size: 45px;
+  margin: 15px;
 }
 
 header {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-
-#card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly; 
-    padding: 15px;
-    margin-left: 10px;
-    align-items: center;
-    margin-right: 10px;
+#recipe-page-button {
+  margin: 15px;
+  transition: 0.5s;
 }
 
-.card {
-    display: inline-flex;
-    margin-bottom:20px;
-    margin-left: 20px;
-    max-width: 500px;
-    align-items: center;
-    padding-right: 4px;
-    
-}
-
-.card h3 {
-    padding:5px;
-    inline-size: 400px;
-    text-align: center;
-    font-size: 22px;
-}
-
-.card h2 {
-    margin-left: 10px;
-}
-
-.card p {
-    margin-left: 10px;
-    margin-right: 10px;
+#recipe-page-button:hover {
+  opacity: 0.5;
 }
 .card button {
     margin-bottom: 10px;
@@ -59,19 +37,185 @@ header {
 }
 
 #countryDrop {
-    display: block;
-    margin-top: 150px;
-    max-width: 50%;
-    align-items: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+#countryDrop h2 {
+  text-align: center;
+}
+
+#ethnicity {
+  cursor: pointer;
+  margin: 15px;
+}
+
+select option {
+  cursor: pointer;
+  border-bottom: 1px solid grey;
+}
+
+select option:hover {
+  background-color: #78c2ad;
+}
+
+#drink-container {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.drink-content {
+  display: flex;
+  flex-direction: row;
+}
+
+#drink-container h3 {
+  align-self: center;
+  font-size: 30px;
+}
+
+.drink-img-and-text {
+  display: flex;
+  margin-top: 10px;
+}
+
+#card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 15px;
+  margin-left: 10px;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.card {
+  display: inline-flex;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  max-width: 500px;
+  align-items: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  cursor: pointer;
+  position: relative;
+}
+
+.card h3 {
+  padding: 5px;
+  inline-size: 400px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.card h2 {
+  margin-left: 10px;
+}
+
+.card p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.card button {
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #f3969a;
+  color: black;
+  transition: 0.5s;
+  transition: transform 250ms, visibility 250ms, opacity 250ms;
+}
+
+.card button:hover {
+  opacity: 0.8;
+  color: black;
+  transform: translateY(-5px);
+}
+
+.ingredients-parent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  z-index: 3;
+  background-color: white;
+  margin: 0;
+  border: 1px solid #78c2ad;
+  border-top: 0;
+  border-radius: 0 5px 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save-recipe-button {
+  align-self: flex-start;
+  order: 1;
+}
+
+.show-less-button {
+  align-self: flex-end;
+  order: 2;
+}
+
+#countryDrop {
+  display: block;
+  margin-top: 150px;
+  max-width: 50%;
+  align-items: center;
+}
+
+/* Recipe HTML page */
+
+.navbar-title {
+  font-size: 45px;
+}
+
+#back-button {
+  margin: 20px;
+  transition: 0.5s;
+}
+
+#back-button:hover {
+  opacity: 0.5;
 }
 
 #recipe-container {
-    margin-left: 50px;
-    margin-top: 125px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #78c2ad;
+  border-radius: 15px;
+  max-width: 55%;
+  margin: 0 auto;
+  margin-top: 150px;
+  padding: 50px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-#recipe-container h2 {
-    text-align: center;
+#recipe-container h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.savedMealContent {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.savedMealContent h1 {
+  font-size: 30px;
+  align-self: flex-start;
+}
+
+.savedMealContent h2 {
+  font-size: 20px;
+  background-color: #78c2ad86;
+  border-radius: 3px;
+  padding-left: 5px;
 }
 
 #drink-container {
